@@ -74,5 +74,10 @@ add constraint CK_tblPerson_Age check(age>0 and age<150);
 
 insert into tblPerson values(6,'Ross','ro@ro.com',2,950);
 
+------------------- To drop a constraint---------------------------------------
+
+alter table tblPerson
+drop constriant CK_tblPerson_Age
+
 
 

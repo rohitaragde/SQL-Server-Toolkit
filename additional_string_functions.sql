@@ -1,4 +1,4 @@
--------------------------- String Functions---------------------------
+-------------------------- String Functions----------------------------------
 
 /* We will learn about commonly used built-in string functions that
 are available in SQL Server
@@ -32,6 +32,8 @@ are available in SQL Server
 select * from tblEmployee;
 
 select ascii('a')
+
+select ascii('A')
 
 select char(97);
 

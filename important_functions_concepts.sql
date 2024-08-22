@@ -87,7 +87,7 @@ Completion time: 2024-08-16T21:42:50.2963561-04:00
  if you accidentally drop the table 
  associated with the function and then execute
  the function that shrows error but you dont want
- to do that and thats where Schema Bindign comes into the picture.
+ to do that and thats where Schema Binding comes into the picture.
 
  When you are creating a function firstly it asks you to 
  create a two-part name for the base table otherwise it throws

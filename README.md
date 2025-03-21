@@ -1,1 +1,1 @@
-"My new SQL Toolkit project" 
+My new SQL Toolkit project

@@ -1,0 +1,69 @@
+What is a backup ?
+
+A backup is an image of that database at the time of the full backup.
+
+When you back up a database, you copy it to a backup device such as a disk. Later, you can use the backup files to restore the database to its original state.
+
+It’s important that you have a good backup strategy to meet the business needs. The planning of the backup strategy starts with a recovery strategy.
+
+These are important questions that direct the recovery strategy:
+
+What is the maximum amount of data loss measured in time that can be tolerated?
+What is the accepted time for the database to be restored in case of a disaster?
+The first question will determine the backup types that you need and the second question involves the use of high availability solution.
+
+Why backup ?
+
+Typically, you back up a database to restore its original state just before a disaster such as:
+
+Hardware failure
+Database corruption
+User-errors
+Also, you can use a backup to copy a database from one server to another. For example, you make a backup of a database on the production server and restore it on the test server.
+
+Where to store the backups
+Ideally, you should store the backup on a separate device that is not the same as the SQL Server.
+
+Hence, you should never store the backup on the same server of SQL Server. The reason is that if the server is crashed, you will lose both data and its backup.
+
+
+Backup Types
+SQL Server allows you to create a backup at a database level; it doesn’t support table-level backup. SQL Server database has the following backup types:
+
+Full backup
+Differential backup
+Transaction log backup
+
+
+Full Backup
+A full backup contains a copy of the entire database including used data pages and the log files written during the backup. A full backup doesn’t truncate the transaction log.
+
+To restore the database, you always need a full backup. In other words, you cannot restore a differential backup or a transaction log backup without a full backup.
+
+A full backup may cause a significant amount of disk I/O. Therefore, you should perform it at a time when the workload is low.
+
+To perform a full backup, you use the BACKUP DATABASE statement with the following basic syntax:
+
+BACKUP DATABASE database_name
+TO DISK = path_to_backup_file;
+
+In this syntax, you specify the database name that you want to perform a full backup after the BACKUP DATABASE keywords and the path to the backup file in the TO DISK clause.
+
+Differential Backup
+
+A differential backup contains only data that has been modified since the last full backup. Apart from this, a differential backup is identical to a full backup.
+
+BACKUP DATABASE database_name 
+TO DISK = path_to_backup_file 
+WITH DIFFERENTIAL;
+
+
+Transaction Log Backup
+A transaction log backup contains all changes made to the database. A transaction log backup is required when you use the full or bulk-logged recovery model because they need to truncate the log.
+
+Note that two subsequent transaction log backups do not contain redundant data. Also, the transaction log backup has no impact on performance, therefore, you can perform it when the workload is high.
+
+To perform a transaction log backup, the recovery model of the database needs to be either FULL or BULK_LOGGED.
+
+BACKUP LOG database_name 
+TO DISK = path_to_backup_file;

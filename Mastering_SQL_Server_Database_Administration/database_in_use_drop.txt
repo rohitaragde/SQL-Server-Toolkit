@@ -1,0 +1,7 @@
+
+to drop the database currently in use:-
+
+USE master;
+GO
+ALTER DATABASE HR SET SINGLE_USER WITH ROLLBACK IMMEDIATE;
+DROP DATABASE HR;
